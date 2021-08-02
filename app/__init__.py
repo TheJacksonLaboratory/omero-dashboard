@@ -22,20 +22,22 @@ def create_plot(folder):
     df_time = get_dataframe(Path(folder) / 'timings.csv')
     df_status = get_dataframe(Path(folder) / 'status.csv')
     df_sessions = get_dataframe(Path(folder) / 'sessions.csv')
-    fig = make_subplots(rows=3, cols=2,
-                        specs=[[{'colspan': 2}, None], [{}, {}], [{}, {}]],
-                        subplot_titles=("OMERO status and Blitz API response time",
-                                        "Sessions per day",
-                                        "Unique users per day",
-                                        "Web response time",
-                                        "JSON API response time"),
-                        horizontal_spacing=0.03, vertical_spacing=0.1,
+    fig = make_subplots(
+        rows=3, cols=2,
+        specs=[[{'colspan': 2}, None], [{}, {}], [{}, {}]],
+        subplot_titles=("OMERO status and Blitz API response time",
+                        "Sessions per day",
+                        "Unique users per day",
+                        "Web response time",
+                        "JSON API response time"),
+        horizontal_spacing=0.03, vertical_spacing=0.1,
                         )
     status_dic = {'green': "All systems operational",
                   'orange': "At least one API/service unresponsive",
                   'red': "All systems unresponsive"}
     fig.add_bar(x=df_time['timestamp'], y=df_time['blitz_api'],
-                marker_color=df_status['color'], row=1, col=1, width=60*50*1000,
+                marker_color=df_status['color'], row=1,
+                col=1, width=60*50*1000,
                 text=[status_dic[i] for i in df_status['color']],
                 hovertemplate='Time: %{x}<br>' +
                               'Blitz API response time: %{y} s<br>' +
