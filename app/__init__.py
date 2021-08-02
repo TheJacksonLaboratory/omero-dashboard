@@ -35,7 +35,7 @@ def create_plot(folder):
                   'orange': "At least one API/service unresponsive",
                   'red': "All systems unresponsive"}
     fig.add_bar(x=df_time['timestamp'], y=df_time['blitz_api'],
-                marker_color=df_status['color'], row=1, col=1,
+                marker_color=df_status['color'], row=1, col=1, width=60*50*1000,
                 text=[status_dic[i] for i in df_status['color']],
                 hovertemplate='Time: %{x}<br>' +
                               'Blitz API response time: %{y} ms<br>' +
@@ -43,22 +43,22 @@ def create_plot(folder):
                               '<extra></extra>'
                 )
     fig.add_bar(x=df_sessions['timestamp'], y=df_sessions['sessions'],
-                row=2, col=1,
+                row=2, col=1, width=60*50*1000*24,
                 hovertemplate='Time: %{x}<br>' +
                               'Total sessions: %{y}<br>' +
                               '<extra></extra>')
     fig.add_bar(x=df_sessions['timestamp'], y=df_sessions['users'],
-                row=2, col=2,
+                row=2, col=2, width=60*50*1000,
                 hovertemplate='Time: %{x}<br>' +
                               'Unique users: %{y}<br>' +
                               '<extra></extra>')
     fig.add_bar(x=df_time['timestamp'], y=df_time['webpage'],
-                row=3, col=1,
+                row=3, col=1, width=60*50*1000,
                 hovertemplate='Time: %{x}<br>' +
                               'Webpage response time: %{y} ms<br>' +
                               '<extra></extra>')
     fig.add_bar(x=df_time['timestamp'], y=df_time['json_api'],
-                row=3, col=2,
+                row=3, col=2, width=60*50*1000,
                 hovertemplate='Time: %{x}<br>' +
                               'JSON API response time: %{y} ms<br>' +
                               '<extra></extra>')
