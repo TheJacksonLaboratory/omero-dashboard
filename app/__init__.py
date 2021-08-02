@@ -38,7 +38,7 @@ def create_plot(folder):
                 marker_color=df_status['color'], row=1, col=1, width=60*50*1000,
                 text=[status_dic[i] for i in df_status['color']],
                 hovertemplate='Time: %{x}<br>' +
-                              'Blitz API response time: %{y} ms<br>' +
+                              'Blitz API response time: %{y} s<br>' +
                               'Status: %{text}' +
                               '<extra></extra>'
                 )
@@ -48,19 +48,19 @@ def create_plot(folder):
                               'Total sessions: %{y}<br>' +
                               '<extra></extra>')
     fig.add_bar(x=df_sessions['timestamp'], y=df_sessions['users'],
-                row=2, col=2, width=60*50*1000,
+                row=2, col=2, width=60*50*1000*24,
                 hovertemplate='Time: %{x}<br>' +
                               'Unique users: %{y}<br>' +
                               '<extra></extra>')
     fig.add_bar(x=df_time['timestamp'], y=df_time['webpage'],
                 row=3, col=1, width=60*50*1000,
                 hovertemplate='Time: %{x}<br>' +
-                              'Webpage response time: %{y} ms<br>' +
+                              'Webpage response time: %{y} s<br>' +
                               '<extra></extra>')
     fig.add_bar(x=df_time['timestamp'], y=df_time['json_api'],
                 row=3, col=2, width=60*50*1000,
                 hovertemplate='Time: %{x}<br>' +
-                              'JSON API response time: %{y} ms<br>' +
+                              'JSON API response time: %{y} s<br>' +
                               '<extra></extra>')
     fig.update_layout(height=1200, showlegend=False)
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
