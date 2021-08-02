@@ -70,6 +70,6 @@ def create_plot(folder):
 @app.route('/')
 def index():
     """Render the HTML template with a plot."""
-    folder = "/tmp/data"
+    folder = "/data"
     bar = create_plot(folder)
     return render_template('index.html', plot=bar)
