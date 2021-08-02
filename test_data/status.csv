@@ -1,0 +1,7 @@
+timestamp,webpage,json_api,ldap,blitz_api,color
+2021-07-27 22:00,True,True,True,True,green
+2021-07-27 23:00,True,False,True,True,orange
+2021-07-28 00:00,True,True,True,True,green
+2021-07-28 01:00,True,True,True,False,orange
+2021-07-28 01:59,False,False,False,False,red
+
