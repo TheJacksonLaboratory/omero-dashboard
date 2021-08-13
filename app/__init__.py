@@ -6,6 +6,7 @@ import json
 import plotly
 from plotly.subplots import make_subplots
 from pathlib import Path
+from datetime import datetime, timedelta
 
 app = Flask(__name__)
 
@@ -64,7 +65,9 @@ def create_plot(folder):
                 hovertemplate='Time: %{x}<br>' +
                               'JSON API response time: %{y} s<br>' +
                               '<extra></extra>')
+    lastmonth = datetime.today() - timedelta(weeks=2)
     fig.update_layout(height=1200, showlegend=False)
+    fig.update_xaxes(range=[lastmonth, datetime.now()])
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 
