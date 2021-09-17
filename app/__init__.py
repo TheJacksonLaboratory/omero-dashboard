@@ -66,8 +66,9 @@ def create_plot(folder):
                               'JSON API response time: %{y} s<br>' +
                               '<extra></extra>')
     lastmonth = datetime.today() - timedelta(weeks=2)
-    fig.update_layout(height=1200, showlegend=False)
     fig.update_xaxes(range=[lastmonth, datetime.now()])
+    fig.update_layout(height=1200, showlegend=False)
+
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
 
